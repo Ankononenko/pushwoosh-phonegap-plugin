@@ -67,6 +67,10 @@
 		<source-file src="src/android/src/com/pushwoosh/plugin/internal/PhonegapPluginProvider.java"
 			target-dir="src/com/pushwoosh/plugin/internal" />
 
+		<source-file src="src/android/src/com/pushwoosh/plugin/internal/ConfigReader.java"
+		    target-dir="src/com/pushwoosh/plugin/internal" />
+
+
         <framework src="build-extras-pushwoosh.gradle" custom="true" type="gradleReference" />
 
 		<framework src="androidx.work:work-runtime:2.7.1" />
