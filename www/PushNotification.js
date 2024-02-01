@@ -107,7 +107,6 @@ PushNotification.prototype.additionalAuthorizationOptions = function(options) {
 	exec(null, null, "PushNotification", "additionalAuthorizationOptions", options ? [options] : []);
 }
 
-
 // TODO: write comments if works
 PushNotification.prototype.setShowForegroundPush = function(value) {
     exec(null, null, "PushwooshNotificationServiceExtension", "setShowForegroundPush", [value]);
