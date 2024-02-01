@@ -11,6 +11,9 @@
 
 var exec = window.cordova.exec;
 
+// Import Capacitor's core API
+var Capacitor = require('@capacitor/core').Capacitor;
+
 //Class: PushNotification
 //Class to interact with Pushwoosh Push Notifications plugin
 //
@@ -45,6 +48,11 @@ function PushNotification() {}
 //(end)
 PushNotification.prototype.onDeviceReady = function(config) {
 	exec(null, null, "PushNotification", "onDeviceReady", config ? [config] : []);
+	// Read the ANDROID_FOREGROUND_PUSH value from the Capacitor configuration
+	var configValue = Capacitor.config.ANDROID_FOREGROUND_PUSH || false;
+
+	// Call the method to set the value in the native plugin
+	this.setShowForegroundPush(configValue);
 };
 
 //Function: onAppActivated
@@ -98,6 +106,12 @@ PushNotification.prototype.registerDevice = function(success, fail) {
 PushNotification.prototype.additionalAuthorizationOptions = function(options) {
 	exec(null, null, "PushNotification", "additionalAuthorizationOptions", options ? [options] : []);
 }
+
+
+// TODO: write comments if works
+PushNotification.prototype.setShowForegroundPush = function(value) {
+    exec(null, null, "PushwooshNotificationServiceExtension", "setShowForegroundPush", [value]);
+};
 
 //Function: unregisterDevice
 //[android, ios, wp8, windows] Unregister device form receiving push notifications
